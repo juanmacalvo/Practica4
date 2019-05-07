@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-may-2019 20:29:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.contrasenna.Cuenta" table="CUENTA" schema="APP" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="idUser" type="int">
+            <column name="ID_USER" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="CONTRASENA" length="60" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="60" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
