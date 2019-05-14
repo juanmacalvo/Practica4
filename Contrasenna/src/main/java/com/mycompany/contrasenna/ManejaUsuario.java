@@ -5,11 +5,66 @@
  */
 package com.mycompany.contrasenna;
 
+import java.util.Scanner;
+import org.hibernate.HibernateException;
+
 /**
  *
  * @author usuario
  */
-public class ManejaUsuario extends Maneja{
-    
-    
+public class ManejaUsuario extends Maneja {
+
+    public void configurarUsuario() {
+        Scanner input = new Scanner(System.in);
+        String pass = "";
+        String probar = "";
+        System.out.println("Escriba una nueva contraseña. No escriba nada si no la quiere cambiar");
+
+        pass = input.next();
+
+        if (pass.length() > 0) {
+            System.out.println("Vuelva a escribir su nueva contraseña");
+            probar = input.next();
+
+            if (pass.equals(probar)) {
+                try {
+                    iniciaOperacion();
+
+                    Usuario user = new Usuario(1, "admin", pass);
+                    getSesion().update(user);
+
+                } catch (HibernateException he) {
+                    manejaExcepcion(he);
+                    throw he;
+                } finally {
+                    finalizaOperacion();
+                }
+
+            } else {
+                System.out.println("No coinciden");
+            }
+        }
+    }
+
+    public void accesoAplicacion() {
+
+        Scanner input = new Scanner(System.in);
+        String usuario = "admin";
+        String pass = "";
+
+        try {
+            iniciaOperacion();
+
+            Usuario user = new Usuario(1, "admin", pass);
+            getSesion().update(user);
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            finalizaOperacion();
+        }
+
+    }
+
 }
