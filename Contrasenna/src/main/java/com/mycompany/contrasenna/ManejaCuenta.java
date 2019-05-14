@@ -13,6 +13,8 @@ public class ManejaCuenta extends Maneja{
     
     
     public void crearClave(){
+        System.out.println("Nueva Cuenta");
+        System.out.println("Contraseña: ");
         
         
     }
