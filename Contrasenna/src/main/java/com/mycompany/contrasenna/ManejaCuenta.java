@@ -5,6 +5,8 @@
  */
 package com.mycompany.contrasenna;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import org.hibernate.HibernateException;
 
@@ -47,6 +49,26 @@ public class ManejaCuenta extends Maneja{
         } finally {
             finalizaOperacion();
         }
+        
+    }
+    
+    
+    public List<Cuenta> listarClaves(){
+        
+        List<Cuenta> lista= new ArrayList<>();
+        try {
+            iniciaOperacion();
+
+            lista = getSesion().createQuery("from Cuenta").list();
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            finalizaOperacion();
+        }
+        
+        return lista;
         
     }
     
