@@ -52,8 +52,21 @@ public class ManejaCuenta extends Maneja{
         
     }
     
+    public void listarClaves(){
+        
+        List<Cuenta> lista=ObtenerClaves();
+        for (int i = 0; i < 10; i++) {
+            
+            Cuenta cuenta=lista.get(i);
+            
+            System.out.println("ID: "+cuenta.getId());
+            System.out.println("Contraseña: "+cuenta.getContrasena());
+            System.out.println("Descripcion: "+cuenta.getNombre());
+
+        }
+    }
     
-    public List<Cuenta> listarClaves(){
+    private List<Cuenta> ObtenerClaves(){
         
         List<Cuenta> lista= new ArrayList<>();
         try {
