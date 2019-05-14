@@ -51,12 +51,23 @@ public class ManejaUsuario extends Maneja {
         Scanner input = new Scanner(System.in);
         String usuario = "admin";
         String pass = "";
+        int salir=0;
 
         try {
             iniciaOperacion();
 
-            Usuario user = new Usuario(1, "admin", pass);
-            getSesion().update(user);
+            Usuario user=(Usuario) getSesion().get(Usuario.class, 1);
+            pass=user.getContrasena();
+            
+            do{
+                System.out.println("Introducir contraseña: ");
+                if(input.next().equals(pass)){
+                    salir=1;
+                }else{
+                    System.out.println("No coincide la contraseña");
+                }
+                
+            }while(salir==0);
 
         } catch (HibernateException he) {
             manejaExcepcion(he);

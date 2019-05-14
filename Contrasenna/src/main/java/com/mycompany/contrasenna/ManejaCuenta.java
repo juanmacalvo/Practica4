@@ -12,4 +12,9 @@ package com.mycompany.contrasenna;
 public class ManejaCuenta extends Maneja{
     
     
+    public void crearClave(){
+        
+        
+    }
+    
 }
