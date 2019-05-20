@@ -55,6 +55,10 @@ public class ManejaCuenta extends Maneja{
         }
         
     }
+    
+    
+    
+    
      public String hash(String stringToHash) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
