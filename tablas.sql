@@ -17,3 +17,7 @@ nombre VARCHAR(60) not null,
 
 CONSTRAINT userAjena1 FOREIGN KEY (id_user) REFERENCES Usuario (id) on delete cascade
 );
+
+
+INSERT INTO Usuario(nombre,contrasena)
+VALUES ('admin','admin');
