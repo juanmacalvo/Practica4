@@ -36,6 +36,8 @@ public class ManejaCuenta extends Maneja {
         cuenta.setIdUser(1);
         cuenta.setContrasena(pass);
         cuenta.setNombre(descrip);*/
+        
+        
         try {
             iniciaOperacion();
 
