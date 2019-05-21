@@ -18,6 +18,7 @@ public class ManejaUsuario extends Maneja {
         Scanner input = new Scanner(System.in);
         String pass = "";
         String probar = "";
+        
         System.out.println("Escriba una nueva contraseña. No escriba nada si no la quiere cambiar");
 
         pass = input.next();
@@ -30,7 +31,7 @@ public class ManejaUsuario extends Maneja {
                 try {
                     iniciaOperacion();
 
-                    Usuario user = new Usuario(1, "admin", pass);
+                    Usuario user = new Usuario(1, "admin", hash(pass));
                     getSesion().update(user);
 
                 } catch (HibernateException he) {
