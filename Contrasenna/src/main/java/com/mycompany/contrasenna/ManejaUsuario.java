@@ -31,7 +31,7 @@ public class ManejaUsuario extends Maneja {
                 try {
                     iniciaOperacion();
 
-                    Usuario user = new Usuario(1, "admin", hash(pass));
+                    Usuario user = new Usuario(1, "admin", pass);
                     getSesion().update(user);
 
                 } catch (HibernateException he) {

@@ -8,6 +8,7 @@ package com.mycompany.contrasenna;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import org.hibernate.HibernateException;
@@ -27,6 +28,7 @@ public class ManejaCuenta extends Maneja{
         Scanner input = new Scanner(System.in);
         String descrip = "";
         String pass = "";
+        PasswordUtils encripta=new PasswordUtils();
 
         System.out.println("Nueva Cuenta");
         System.out.println("Contraseña: ");
@@ -53,7 +55,7 @@ public class ManejaCuenta extends Maneja{
             
             Query query = getSesion().createSQLQuery("INSERT INTO CUENTA (id_user, contrasena, nombre) VALUES (:valor1, :valor2, :valor3)");
             query.setParameter("valor1", 1);
-            query.setParameter("valor2", hash(pass));
+            query.setParameter("valor2", encripta.generateSecurePassword(pass));
             query.setParameter("valor3", descrip);
             query.executeUpdate();
 
@@ -76,12 +78,13 @@ public class ManejaCuenta extends Maneja{
     public void listarClaves() {
 
         List<Cuenta> lista = ObtenerClaves();
+        PasswordUtils enc = new PasswordUtils();
         for (int i = 0; i < lista.size(); i++) {
 
             Cuenta cuenta = lista.get(i);
 
             System.out.println("\nID: " + cuenta.getId());
-            System.out.println("Contraseña: " + cuenta.getContrasena());
+            System.out.println("Contraseña: " + enc.mostrarContra(cuenta.getContrasena()));
             System.out.println("Descripcion: " + cuenta.getNombre());
             System.out.println("");
 
