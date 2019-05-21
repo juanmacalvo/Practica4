@@ -21,6 +21,8 @@ public class NewMain {
         Scanner input = new Scanner(System.in);
         int i;
         int salir=0;
+        
+        Maneja conexion = new Maneja();
 
         ManejaUsuario mu = new ManejaUsuario();
         ManejaCuenta mc = new ManejaCuenta();
@@ -63,6 +65,9 @@ public class NewMain {
 
 
         } while (salir == 0);
+        
+
+        conexion.cerrarSesion();
 
     }
 

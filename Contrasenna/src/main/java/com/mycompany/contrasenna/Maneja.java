@@ -43,4 +43,8 @@ public class Maneja {
         System.out.println("Ocurrió un error en la capa de acceso a datos " + he.getMessage());
         System.exit(0);
     }
+    
+    public void cerrarSesion(){
+        NewHibernateUtil.getSessionFactory().close();
+}
 }
