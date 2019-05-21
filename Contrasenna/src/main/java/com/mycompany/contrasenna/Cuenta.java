@@ -1,6 +1,9 @@
 package com.mycompany.contrasenna;
 // Generated 07-may-2019 20:29:44 by Hibernate Tools 4.3.1
 
+import javax.persistence.*;
+
+
 
 
 /**
@@ -9,6 +12,8 @@ package com.mycompany.contrasenna;
 public class Cuenta  implements java.io.Serializable {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
      private int id;
      private int idUser;
      private String contrasena;
